@@ -19,10 +19,10 @@ const Project = g.model('Project', {
   title: g.string().length({min: 3}),
   description: g.string(),
   image: g.url(),
-  lineSiteUrl: g.url(),
+  liveSiteUrl: g.url(),
   githubUrl: g.url(),
   category: g.string().search(),
-  createBy: g.relation(()=> User)
+  createdBy: g.relation(()=> User)
 
 }).auth((rules) => {
   rules.public().read(),

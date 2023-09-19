@@ -1,9 +1,18 @@
+import { redirect } from "next/navigation"
+import Modal from "@/components/Modal"
+import ProjectForm from "@/components/ProjectForm"
+import { getCurrentUser } from "@/lib/session"
 
-const CreateProject = () => {
+
+const CreateProject = async () => {
+  const session = await getCurrentUser()
+  if(!session?.user) redirect('/')
   return (
-    <div>
-      Create project
-    </div>
+    <Modal>
+      <h3 className="modal-head-text">Create new project</h3>
+
+      <ProjectForm type="create" session={session}/>
+      </Modal>
   )
 }
 
